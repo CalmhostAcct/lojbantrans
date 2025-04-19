@@ -46,8 +46,7 @@ u'i lo ... cu ...
 - The output is Lojban-ish (aka Lojbish) using valid Lojban roots, but may not always be grammatically perfect.
 - A fun tool for Lojban learners, conlangers, or AI language hobbyists.
 
-
+## Future Features
 - Multi-word gloss detection
 - Lojban-to-English reverse mode
 - Grammar-aware output (using camxes or jbofihe)
-```
