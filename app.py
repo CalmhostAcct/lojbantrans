@@ -6,7 +6,27 @@ from nltk.corpus import wordnet
 import json
 import click
 import re
+import contextlib
+import io
 
+# === Silent NLTK downloader ===
+def silent_nltk_download(package):
+    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+        nltk.download(package, quiet=True)
+
+try:
+    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+       nltk.data.find("tokenizers/punkt")
+except LookupError:
+    silent_nltk_download("punkt")
+
+try:
+    with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+       nltk.data.find("corpora/wordnet")
+except LookupError:
+    silent_nltk_download("wordnet")
+
+# === Translator logic ===
 
 lemmatizer = WordNetLemmatizer()
 
@@ -52,7 +72,6 @@ def translate_text(text, verbose=False):
                 translated = gloss_dict.get(lem_word)
 
                 if not translated:
-                    # Try synonyms
                     for synonym in get_synonyms(lem_word):
                         translated = gloss_dict.get(synonym)
                         if translated:
@@ -97,7 +116,5 @@ def cli(text, file, verbose, save):
             f.write(result)
         print(f"\n✅ Translation saved to {save}")
 
-
 if __name__ == '__main__':
     cli()
-
