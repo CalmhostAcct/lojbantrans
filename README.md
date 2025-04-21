@@ -1,52 +1,75 @@
 
-# lojbantrans
 
-**`lojbantrans`** is a Python-based proof-of-concept command-line tool for translating English text into Lojban using glosswords.
+# 🧠 lojbantrans
+
+**`lojbantrans`** is a Python-based proof-of-concept command-line tool for translating English text into Lojban using a glossword dictionary.  
+It produces readable, Lojban-inspired output that’s great for learners and conlang explorers.
 
 ---
 
-## 🔧 How to Use
+## 🚀 How to Use
 
-1. **Install dependencies** from `requirements.txt`:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Install dependencies  
+```bash
+pip install -r requirements.txt
+```
 
-2. **Run the tool**:
-   ```bash
-   python app.py --text "Your English text here"
-   ```
+### 2. Run the tool
+```bash
+python app.py --text "Your English text here"
+```
+
+Or translate from a file:
+```bash
+python app.py --file input.txt --save output.txt
+```
 
 ---
 
 ### 💡 Example
 
 ```bash
-python app.py --text "Hello World"
+python app.py --text "Cats are small mammals"
 ```
 
 Output:
 ```
 Lojban Translation:
-u'i lo ... cu ...
+u'i lo mlatu cmalu mabru cu zasti
 ```
 
 ---
 
-## 📁 Files
+## 📂 Project Files
 
-- `app.py` – main CLI script
-- `valsi_glosswords.json` – glossword-to-Lojban dictionary (required)
+- `app.py` – Main CLI script
+- `valsi_glosswords.json` – Glossword-to-Lojban dictionary (required)
+
+---
+
+## ⚙️ Features
+
+- ✅ Sentence splitting
+- ✅ Lemmatization (handles plurals like "cats")
+- ✅ Synonym fallback
+- ✅ Number-to-Lojban digit conversion
+- ✅ Verbose mode for debugging translations
+- ✅ File input/output support
 
 ---
 
 ## 🧠 Notes
 
-- Common English glue words like "is", "the", "a" are ignored automatically.
-- The output is Lojban-ish (aka Lojbish) using valid Lojban roots, but may not always be grammatically perfect.
-- A fun tool for Lojban learners, conlangers, or AI language hobbyists.
+- Common English glue words like "is", "the", and "a" are ignored automatically.
+- Translations follow a basic `lo ... cu ...` Lojban bridi structure.
+- Outputs are **Lojban-ish** (aka *Lojbish*) and use valid roots, but aren't guaranteed to be grammatically perfect.
+- Great for Lojban learners, conlangers, AI language tinkerers, and fans of logical languages.
 
-## Future Features
-- Multi-word gloss detection
-- Lojban-to-English reverse mode
-- Grammar-aware output (using camxes or jbofihe)
+---
+
+## 🌱 Future Features
+
+- Multi-word gloss detection (e.g. "ice cream", "take care of")
+- Reverse mode: **Lojban → English**
+- Grammar-aware parsing with tools like `camxes` or `jbofihe`
+- Attitudinal customization (`--attitude`) for expressive tone
