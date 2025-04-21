@@ -8,6 +8,7 @@ import click
 import re
 import contextlib
 import io
+import contractions
 
 # === Silent NLTK downloader ===
 def silent_nltk_download(package):
@@ -43,6 +44,7 @@ def get_synonyms(word):
     return set(lemma.name().lower().replace('_', ' ') for syn in synsets for lemma in syn.lemmas())
 
 def translate_text(text, verbose=False):
+    text = contractions.fix(text)
     ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of"}
 
     with open("valsi_glosswords.json", "r", encoding="utf-8") as f:
@@ -118,3 +120,4 @@ def cli(text, file, verbose, save):
 
 if __name__ == '__main__':
     cli()
+
