@@ -45,7 +45,7 @@ def get_synonyms(word):
 
 def translate_text(text, verbose=False):
     text = contractions.fix(text)
-    ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of"}
+    ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of", ","}
 
     with open("valsi_glosswords.json", "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -60,6 +60,8 @@ def translate_text(text, verbose=False):
     translated_output = []
 
     for sentence in sentences:
+        sentence = re.sub(r'\[\d+\]', '', sentence)  # Remove [3], [4], etc.
+        sentence = re.sub(r'\[.*?\]', '', sentence)  # Remove anything in square brackets
         sentence = re.sub(r'\(.*?\)', '', sentence)  # remove parentheticals
         tokens = word_tokenize(sentence)
         translated_words = []
