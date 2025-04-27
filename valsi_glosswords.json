@@ -1,5 +1,383 @@
 [
   {
+    "word": "coi",
+    "glosswords": [
+      "hello",
+      "greetings"
+    ]
+  },
+  {
+    "word": "co'o",
+    "glosswords": [
+      "goodbye",
+      "farewell"
+    ]
+  },
+  {
+    "word": "go'i",
+    "glosswords": [
+      "yes",
+      "affirmative"
+    ]
+  },
+  {
+    "word": "na go'i",
+    "glosswords": [
+      "no",
+      "negative"
+    ]
+  },
+  {
+    "word": "nanmu",
+    "glosswords": [
+      "man",
+      "male"
+    ]
+  },
+  {
+    "word": "ninmu",
+    "glosswords": [
+      "woman",
+      "female"
+    ]
+  },
+  {
+    "word": "pendo",
+    "glosswords": [
+      "friend",
+      "companion"
+    ]
+  },
+  {
+    "word": "prami",
+    "glosswords": [
+      "love",
+      "lover"
+    ]
+  },
+  {
+    "word": "cidja",
+    "glosswords": [
+      "food",
+      "edible"
+    ]
+  },
+  {
+    "word": "djacu",
+    "glosswords": [
+      "water",
+      "liquid"
+    ]
+  },
+  {
+    "word": "dinju",
+    "glosswords": [
+      "building",
+      "house",
+      "structure"
+    ]
+  },
+  {
+    "word": "gerku",
+    "glosswords": [
+      "dog",
+      "canine"
+    ]
+  },
+  {
+    "word": "mlatu",
+    "glosswords": [
+      "cat",
+      "feline"
+    ]
+  },
+  {
+    "word": "karce",
+    "glosswords": [
+      "car",
+      "vehicle",
+      "automobile"
+    ]
+  },
+  {
+    "word": "cukta",
+    "glosswords": [
+      "book",
+      "text"
+    ]
+  },
+  {
+    "word": "zgike",
+    "glosswords": [
+      "music",
+      "musical performance"
+    ]
+  },
+  {
+    "word": "gleki",
+    "glosswords": [
+      "happy",
+      "joyful",
+      "glad"
+    ]
+  },
+  {
+    "word": "badri",
+    "glosswords": [
+      "sad",
+      "unhappy",
+      "depressed"
+    ]
+  },
+  {
+    "word": "sutra",
+    "glosswords": [
+      "fast",
+      "quick",
+      "speedy"
+    ]
+  },
+  {
+    "word": "mabla",
+    "glosswords": [
+      "bad",
+      "negative",
+      "inferior"
+    ]
+  },
+  {
+    "word": "barda",
+    "glosswords": [
+      "big",
+      "large",
+      "great"
+    ]
+  },
+  {
+    "word": "cmalu",
+    "glosswords": [
+      "small",
+      "tiny",
+      "little"
+    ]
+  },
+  {
+    "word": "lenku",
+    "glosswords": [
+      "cold",
+      "cool"
+    ]
+  },
+  {
+    "word": "djedi",
+    "glosswords": [
+      "day",
+      "24 hours"
+    ]
+  },
+  {
+    "word": "nicte",
+    "glosswords": [
+      "night",
+      "nighttime"
+    ]
+  },
+  {
+    "word": "solri",
+    "glosswords": [
+      "sun",
+      "solar body"
+    ]
+  },
+  {
+    "word": "lunra",
+    "glosswords": [
+      "moon",
+      "lunar body"
+    ]
+  },
+  {
+    "word": "tarci",
+    "glosswords": [
+      "star",
+      "celestial body"
+    ]
+  },
+  {
+    "word": "terdi",
+    "glosswords": [
+      "earth",
+      "ground",
+      "planet"
+    ]
+  },
+  {
+    "word": "tsani",
+    "glosswords": [
+      "sky",
+      "heavens"
+    ]
+  },
+  {
+    "word": "tricu",
+    "glosswords": [
+      "tree",
+      "woody plant"
+    ]
+  },
+  {
+    "word": "spati",
+    "glosswords": [
+      "plant",
+      "flora"
+    ]
+  },
+  {
+    "word": "jdini",
+    "glosswords": [
+      "money",
+      "currency"
+    ]
+  },
+  {
+    "word": "ckule",
+    "glosswords": [
+      "school",
+      "academy",
+      "educational institution"
+    ]
+  },
+  {
+    "word": "gasnu",
+    "glosswords": [
+      "do",
+      "cause",
+      "perform"
+    ]
+  },
+  {
+    "word": "klama",
+    "glosswords": [
+      "come",
+      "go",
+      "arrive"
+    ]
+  },
+  {
+    "word": "cadzu",
+    "glosswords": [
+      "walk",
+      "stroll"
+    ]
+  },
+  {
+    "word": "citka",
+    "glosswords": [
+      "eat",
+      "consume"
+    ]
+  },
+  {
+    "word": "pinxe",
+    "glosswords": [
+      "drink",
+      "sip"
+    ]
+  },
+  {
+    "word": "viska",
+    "glosswords": [
+      "see",
+      "look at"
+    ]
+  },
+  {
+    "word": "tirna",
+    "glosswords": [
+      "hear",
+      "listen"
+    ]
+  },
+  {
+    "word": "casnu",
+    "glosswords": [
+      "discuss",
+      "talk about"
+    ]
+  },
+  {
+    "word": "pensi",
+    "glosswords": [
+      "think",
+      "ponder",
+      "reflect"
+    ]
+  },
+  {
+    "word": "djuno",
+    "glosswords": [
+      "know",
+      "understand"
+    ]
+  },
+  {
+    "word": "djica",
+    "glosswords": [
+      "want",
+      "desire"
+    ]
+  },
+  {
+    "word": "nitcu",
+    "glosswords": [
+      "need",
+      "require"
+    ]
+  },
+  {
+    "word": "ka'e",
+    "glosswords": [
+      "can",
+      "be able to"
+    ]
+  },
+  {
+    "word": "cfari",
+    "glosswords": [
+      "start",
+      "begin",
+      "should (in context)"
+    ]
+  },
+  {
+    "word": "melbi",
+    "glosswords": [
+      "beautiful",
+      "pretty"
+    ]
+  },
+  {
+    "word": "xajmi",
+    "glosswords": [
+      "funny",
+      "comical"
+    ]
+  },
+  {
+    "word": "cinmo",
+    "glosswords": [
+      "emotion",
+      "feeling"
+    ]
+  },
+  {
+    "word": "lacpu",
+    "glosswords": [
+      "pull",
+      "draw"
+    ]
+  },
+  {
     "word": "a",
     "glosswords": [
       "and/or",
@@ -300,6 +678,12 @@
       "eigenvector",
       "multiplicity (algebraic) of eigenvalue",
       "self-preserving vector under mapping/transformation"
+    ]
+  },
+  {
+    "word": "there",
+    "glosswords": [
+      "va"
     ]
   },
   {
