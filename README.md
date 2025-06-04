@@ -1,8 +1,8 @@
 
 
-# lojbantrans: Proof-of-concept English-Lojban translation engine
+# lojbantrans: Proof-of-concept Lojban translator
 
-**`lojbantrans`** is a Python-based proof-of-concept command-line engine for translating English text into Lojban using a glossword dictionary. It can be used standalone or as a starting point.  
+**`lojbantrans`** is a Python-based proof-of-concept command-line tool for translating English text into Lojban and Lojban text into English using a glossword dictionary. It can be used standalone or as a starting point.  
 It produces readable, Lojban-inspired output that’s great for learners and conlang explorers.
 
 ## Documentation
