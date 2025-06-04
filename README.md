@@ -19,6 +19,12 @@ pip install -r requirements.txt
 python app.py --text "Your English text here"
 ```
 
+Use `--reverse` to translate from Lojban to English:
+
+```bash
+python app.py --text "coi" --reverse
+```
+
 Or translate from a file:
 ```bash
 python app.py --file input.txt --save output.txt
@@ -55,6 +61,7 @@ u'i lo mlatu cmalu mabru cu zasti
 - ✅ Number-to-Lojban digit conversion
 - ✅ Verbose mode for debugging translations
 - ✅ File input/output support
+- ✅ Reverse mode (Lojban → English)
 
 ---
 
@@ -70,6 +77,5 @@ u'i lo mlatu cmalu mabru cu zasti
 ## 🌱 Future Features
 
 - Multi-word gloss detection (e.g. "ice cream", "take care of")
-- Reverse mode: **Lojban → English**
 - Grammar-aware parsing with tools like `camxes` or `jbofihe`
 - Attitudinal customization (`--attitude`) for expressive tone
