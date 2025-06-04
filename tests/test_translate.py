@@ -14,3 +14,8 @@ def test_single_word_translation():
 def test_multi_word_translation():
     result = app.translate_text("man love")
     assert result.strip() == "u'i lo nanmu cu prami"
+
+
+def test_phrase_translation():
+    result = app.translate_text("ice cream")
+    assert result.strip() == "u'i bisyladru"
