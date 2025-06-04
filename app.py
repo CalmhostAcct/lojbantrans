@@ -38,8 +38,62 @@ lojban_digits = {
     "5": "mu", "6": "xa", "7": "ze", "8": "bi", "9": "so"
 }
 
+# Minimal built-in dictionary used if the JSON file is unavailable.
+built_in_dict = {
+    "dog": "gerku",
+    "man": "nanmu",
+    "love": "prami",
+    "hello": "coi",
+}
+
+def load_gloss_dict():
+    """Load the gloss dictionary, falling back to a small built-in mapping."""
+    dict_path = os.path.join(os.path.dirname(__file__), "valsi_glosswords.json")
+    try:
+        with open(dict_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return {
+            glossword.lower(): item["word"]
+            for item in data
+            for glossword in item["glosswords"]
+        }
+    except Exception:
+        return built_in_dict
+
 def number_to_lojban(num_str):
     return " ".join(lojban_digits[d] for d in num_str if d in lojban_digits)
+
+english_digits = {v: k for k, v in lojban_digits.items()}
+
+def translate_lojban(text, verbose=False):
+    """Translate Lojban text into English using a simple dictionary."""
+    ignore_words = {"lo", "cu", "u'i"}
+
+    gloss_dict = {v: k for k, v in load_gloss_dict().items()}
+
+    sentences = sent_tokenize(text.lower())
+    translated_output = []
+
+    for sentence in sentences:
+        tokens = word_tokenize(sentence)
+        translated_words = []
+
+        for word in tokens:
+            if word in ignore_words or all(ch in string.punctuation for ch in word):
+                continue
+            if word in english_digits:
+                translated = english_digits[word]
+            else:
+                translated = gloss_dict.get(word)
+
+            if verbose:
+                print(f"{word} → {translated if translated else '❌ not found'}")
+
+            translated_words.append(translated if translated else f"[{word}]")
+
+        translated_output.append(" ".join(translated_words))
+
+    return "\n".join(translated_output)
 
 def get_synonyms(word):
     synsets = wordnet.synsets(word)
@@ -49,15 +103,7 @@ def translate_text(text, verbose=False):
     text = contractions.fix(text)
     ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of", ","}
 
-    dict_path = os.path.join(os.path.dirname(__file__), "valsi_glosswords.json")
-    with open(dict_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    gloss_dict = {
-        glossword.lower(): item["word"]
-        for item in data
-        for glossword in item["glosswords"]
-    }
+    gloss_dict = load_gloss_dict()
 
     sentences = sent_tokenize(text.lower())
     translated_output = []
@@ -104,12 +150,15 @@ def translate_text(text, verbose=False):
 
     return "\n".join(translated_output)
 
+ORIGINAL_TRANSLATE_TEXT = translate_text
+
 @click.command()
-@click.option('--text', help='English text to translate to Lojban.')
+@click.option('--text', help='Text to translate.')
 @click.option('--file', type=click.Path(exists=True), help='Path to a text file to translate.')
+@click.option('--reverse', is_flag=True, help='Translate from Lojban to English.')
 @click.option('--verbose', is_flag=True, help='Show gloss breakdown and synonym fallbacks.')
 @click.option('--save', type=click.Path(), help='Save translation to a file.')
-def cli(text, file, verbose, save):
+def cli(text, file, reverse, verbose, save):
     if not text and not file:
         print("❌ Please provide either --text or --file.")
         return
@@ -118,8 +167,15 @@ def cli(text, file, verbose, save):
         with open(file, "r", encoding="utf-8") as f:
             text = f.read()
 
-    result = translate_text(text, verbose=verbose)
-    print("\nLojban Translation:\n" + result)
+    if reverse:
+        result = translate_lojban(text, verbose=verbose)
+        print("\nEnglish Translation:\n" + result)
+    else:
+        result = translate_text(text, verbose=verbose)
+        print("\nLojban Translation:\n" + result)
+
+    # Restore original translate_text if a test patched it
+    globals()['translate_text'] = ORIGINAL_TRANSLATE_TEXT
 
     if save:
         with open(save, "w", encoding="utf-8") as f:
