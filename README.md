@@ -5,8 +5,13 @@
 **`lojbantrans`** is a Python-based proof-of-concept command-line engine for translating English text into Lojban using a glossword dictionary. It can be used standalone or as a starting point.  
 It produces readable, Lojban-inspired output that’s great for learners and conlang explorers.
 
+## Documentation
+- `--text`: The Lojban text you want to translate
+- `--verbose`: The verbose mode describing each word translation in detail
+- `--file`: The text file you want to import
+- `--save`: The text file you want to save to
+- `--reverse`: The Lojban-English translator mode
 ---
-
 ## 🚀 How to Use
 
 ### 1. Install dependencies  
