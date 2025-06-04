@@ -8,6 +8,8 @@ import click
 import re
 import contextlib
 import io
+import os
+import string
 import contractions
 
 # === Silent NLTK downloader ===
@@ -47,7 +49,8 @@ def translate_text(text, verbose=False):
     text = contractions.fix(text)
     ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of", ","}
 
-    with open("valsi_glosswords.json", "r", encoding="utf-8") as f:
+    dict_path = os.path.join(os.path.dirname(__file__), "valsi_glosswords.json")
+    with open(dict_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     gloss_dict = {
@@ -67,7 +70,7 @@ def translate_text(text, verbose=False):
         translated_words = []
 
         for word in tokens:
-            if word in ignore_words:
+            if word in ignore_words or all(ch in string.punctuation for ch in word):
                 continue
             if word.isdigit():
                 translated = number_to_lojban(word)
