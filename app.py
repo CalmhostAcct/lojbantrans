@@ -65,7 +65,7 @@ def translate_text(text, verbose=False):
     for sentence in sentences:
         sentence = re.sub(r'\[\d+\]', '', sentence)  # Remove [3], [4], etc.
         sentence = re.sub(r'\[.*?\]', '', sentence)  # Remove anything in square brackets
-        sentence = re.sub(r'\(.*?\)', '', sentence)  # remove parentheticals
+        sentence = re.sub(r'\(.*?\)', '', sentence)  # Remove parentheticals
         tokens = word_tokenize(sentence)
         translated_words = []
 
