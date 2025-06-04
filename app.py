@@ -52,11 +52,13 @@ def load_gloss_dict():
     try:
         with open(dict_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        return {
-            glossword.lower(): item["word"]
-            for item in data
-            for glossword in item["glosswords"]
-        }
+        gloss_dict = {}
+        for item in data:
+            for glossword in item["glosswords"]:
+                gw = glossword.lower()
+                if gw not in gloss_dict:  # keep first occurrence
+                    gloss_dict[gw] = item["word"]
+        return gloss_dict
     except Exception:
         return built_in_dict
 
@@ -104,6 +106,7 @@ def translate_text(text, verbose=False):
     ignore_words = {"is", "are", "was", "were", "am", "the", "a", "an", "of", ","}
 
     gloss_dict = load_gloss_dict()
+    max_gloss_len = max(len(g.split()) for g in gloss_dict)
 
     sentences = sent_tokenize(text.lower())
     translated_output = []
@@ -114,10 +117,30 @@ def translate_text(text, verbose=False):
         sentence = re.sub(r'\(.*?\)', '', sentence)  # Remove parentheticals
         tokens = word_tokenize(sentence)
         translated_words = []
+        i = 0
 
-        for word in tokens:
+        while i < len(tokens):
+            word = tokens[i]
             if word in ignore_words or all(ch in string.punctuation for ch in word):
+                i += 1
                 continue
+
+            found_phrase = False
+            max_span = min(max_gloss_len, len(tokens) - i)
+            for span in range(max_span, 1, -1):
+                phrase = " ".join(tokens[i:i+span]).lower()
+                if phrase in gloss_dict:
+                    translated = gloss_dict[phrase]
+                    if verbose:
+                        print(f"{phrase} → {translated}")
+                    translated_words.append(translated)
+                    i += span
+                    found_phrase = True
+                    break
+
+            if found_phrase:
+                continue
+
             if word.isdigit():
                 translated = number_to_lojban(word)
             else:
@@ -134,6 +157,7 @@ def translate_text(text, verbose=False):
                 print(f"{word} → {translated if translated else '❌ not found'}")
 
             translated_words.append(translated if translated else f"[{word}]")
+            i += 1
 
         if translated_words:
             if len(translated_words) == 1:

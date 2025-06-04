@@ -62,6 +62,7 @@ u'i lo mlatu cmalu mabru cu zasti
 - ✅ Verbose mode for debugging translations
 - ✅ File input/output support
 - ✅ Reverse mode (Lojban → English)
+- ✅ Multi-word gloss detection
 
 ---
 
@@ -75,7 +76,5 @@ u'i lo mlatu cmalu mabru cu zasti
 ---
 
 ## 🌱 Future Features
-
-- Multi-word gloss detection (e.g. "ice cream", "take care of")
 - Grammar-aware parsing with tools like `camxes` or `jbofihe`
 - Attitudinal customization (`--attitude`) for expressive tone
