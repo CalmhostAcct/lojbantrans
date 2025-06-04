@@ -90,9 +90,12 @@ def translate_text(text, verbose=False):
             translated_words.append(translated if translated else f"[{word}]")
 
         if translated_words:
-            predicate = translated_words[-1]
-            subject = translated_words[:-1]
-            lojban_sentence = "lo " + " ".join(subject) + " cu " + predicate
+            if len(translated_words) == 1:
+                lojban_sentence = translated_words[0]
+            else:
+                predicate = translated_words[-1]
+                subject = translated_words[:-1]
+                lojban_sentence = "lo " + " ".join(subject) + " cu " + predicate
         else:
             lojban_sentence = ""
 
