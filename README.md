@@ -1,7 +1,7 @@
 
 
 # lojbantrans: Proof-of-concept Lojban translator
-
+**UPDATE:** We now use spaCy combined with word vectors, resulting in faster performance and more reliable translations.<br><hr>
 **`lojbantrans`** is a Python-based proof-of-concept command-line tool for translating English text into Lojban and Lojban text into English using a glossword dictionary. It can be used standalone or as a starting point.  
 It produces readable, Lojban-inspired output that’s great for learners and conlang explorers.
 
@@ -17,6 +17,10 @@ It produces readable, Lojban-inspired output that’s great for learners and con
 ### 1. Install dependencies  
 ```bash
 pip install -r requirements.txt
+```
+And also this for downloading the spaCy model.
+```bash
+spacy download en_core_web_lg
 ```
 
 ### 2. Run the tool
